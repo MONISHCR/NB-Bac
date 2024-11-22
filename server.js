@@ -12,13 +12,7 @@ app.use(express.json());
 mongoose.connect('mongodb+srv://Monish:Monish21@cluster0.mtbgshr.mongodb.net/noticesDB?retryWrites=true&w=majority', {
 
 });
-app.use((req, res, next) => {
-  const userAgent = req.headers['user-agent'] || '';
-  if (/python|curl|wget/i.test(userAgent)) {
-    return res.status(403).send('Bots are not allowed');
-  }
-  next();
-});
+
 
 const noticeSchema = new mongoose.Schema({
   content: String,
